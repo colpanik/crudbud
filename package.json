@@ -1,0 +1,15 @@
+{
+  "name": "crudbud",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node app"
+  },
+  "dependencies": {
+    "mongoose": "3.4.x",
+    "async": "*",
+    "forms": "*",
+    "underscore": "*",
+    "jquery":"*"
+  }
+}
