@@ -7,14 +7,14 @@ A no-hassle, easy-to-install CRUD interface creator for express.
 #### Are you:
 New to express? A frontend developer looking to build out a backend interface? A backend developer looking to save some time?
 
-Crudbud sets up your rest routes
+Crudbud automatically sets up a mongo database, defines CRUD routes and generates html forms based on a few simple options.
 
 
 ## Usage
 ### In app.js
 ```javascript
 var express = require('express')
-  , crudbud = require('crudbud');
+  , crudbud = require('crudbud')
   , app = express();
 
 app.condfigure(function() {
