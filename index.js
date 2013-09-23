@@ -15,9 +15,7 @@ module.exports = function(app, options) {
   mongo({ dbName: options.dbName || null });
 
   var models = options.models;
-
-
-  // create a mongoose schema for each of our user defined models\
+  // create a mongoose schema for each of our user defined models
   _.each(options.models, function(model, modelName){
     // I will eventually want to add some keys to model.fields.
     // Probably will be auto-generating slug and createdAt
@@ -90,5 +88,15 @@ module.exports = function(app, options) {
     callback();
   }, function(err) {
     console.log('Crudbud initialized');
+  });
+}
+
+module.exports.get = function(model, callback) {
+  classes[model].find({}, function(err, docs){
+    if(err) {
+     return callback(err, null)
+    }
+    
+    callback(null, docs);
   });
 }

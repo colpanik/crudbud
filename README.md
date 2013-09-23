@@ -34,6 +34,21 @@ crudbud(app, {
 
 ```
 
+### Retrieving objects from the database
+#### crudbud.get(modelName, callback);
+
+```javascript
+
+// In an express route
+
+app.get('/blog', function(req, res){
+  // gets all blogposts saved with crudbud and passes them to the "blog" template
+  crudbud.get('blogPost', function(err, posts){
+    res.render('blog', { posts: posts })
+  });
+});
+```
+
 ## Form Field Widget Types
 
 * Text
@@ -59,3 +74,10 @@ crudbud(app, {
   }
 });
 ```
+
+## To Do:
+
+* Provide basic templates for index show pages (preferably using nunjucks)
+* Easy overriding of crudbud templates at project level
+* Apply bootstrap styles to auto generated forms (this should be a toggleable option)
+* Demonstrate usage with multiple examples
