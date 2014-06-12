@@ -1,14 +1,13 @@
 crudbud
 =======
 
-A no-hassle, easy-to-install CRUD interface creator for express.
+A no-hassle, easy-to-install CRUD interface creator for express js.  
 
 
 #### Are you:
-New to express? A frontend developer looking to build out a backend interface? A backend developer looking to save some time?
+New to express? A frontend developer looking to build out a backend interface? Used to rails doing everything for you?
 
-Crudbud automatically sets up a mongo database, defines CRUD routes and generates html forms based on a few simple options.
-
+Crudbud automatically sets up a database connection, defines CRUD routes and generates html forms based on a few simple options.
 
 ## Usage
 ### In app.js
