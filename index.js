@@ -47,7 +47,7 @@ module.exports = function(app, options) {
 
       delete model.fields[f].widget;
       delete model.fields[f].choices;
-    })
+    });
 
     schemas[modelName] = mongoose.Schema(model.fields);
     schemaNames.push(modelName);
@@ -60,22 +60,26 @@ module.exports = function(app, options) {
     // we use Caolan's forms module to generate markup for our
     var formFields = forms.create(models[modelName].formFields);
 
-    var $form = $('<form action="/new/'+modelName+'" method="POST"></form>');
+    var $form = $('<form action="/'+modelName+'/new" method="POST"></form>');
     $form.append(formFields.toHTML());
     $form.append('<input type="submit">');
 
     var markup = $('<div>').append($form).clone().html(); 
 
-    app.get('/new/'+modelName, function(req, res) {
+    // app.get('/'+modelName, function(req, res) {
+    //   res.send(markup);
+    // });
+
+    app.get('/'+modelName+'/new', function(req, res) {
       res.send(markup);
     });
 
-    app.post('/new/'+modelName, function(req, res) {
+    app.post('/'+modelName+'/new', function(req, res) {
       var instance = new classes[modelName](req.body);
 
       instance.save(function(err){
         console.log(err)
-        res.send(req.body)
+        res.redirect(modelName+'/new');
       });
     });
 
@@ -92,11 +96,5 @@ module.exports = function(app, options) {
 }
 
 module.exports.get = function(model, callback) {
-  classes[model].find({}, function(err, docs){
-    if(err) {
-     return callback(err, null)
-    }
-    
-    callback(null, docs);
-  });
+  classes[model].find({}, callback);
 }
